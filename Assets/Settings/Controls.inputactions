@@ -1,0 +1,94 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Playing",
+            "id": "942fba2c-d945-44c9-b6ce-b46a45fbd361",
+            "actions": [
+                {
+                    "name": "NWPaddle",
+                    "type": "Button",
+                    "id": "9831c36e-7825-4fa5-83bb-3a04395df99d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NEPaddle",
+                    "type": "Button",
+                    "id": "94a7bcf7-be16-4bf9-bfde-5ef34b8182a3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SEPaddle",
+                    "type": "Button",
+                    "id": "f98134e2-f666-4a59-ab95-8ccec33cfe51",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SWPaddle",
+                    "type": "Button",
+                    "id": "a1254bef-17a9-4334-98f7-1b5c2e3de1bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2cb251e6-179e-43ce-bdce-14b4be256e8c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NWPaddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "783d3f9c-dcca-4a9d-8639-621665089452",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NEPaddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "937cab90-8389-4e3c-a1dc-0d4e8b07f2e9",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SEPaddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0750b5f-1345-431a-a395-64dd14828b68",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SWPaddle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
