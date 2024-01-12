@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029143, g: 0.22572419, b: 0.30693057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -829,6 +829,54 @@ MonoBehaviour:
   port: 8051
   lastReceivedUDPPacket: 
   allReceivedUDPPackets: 
+  OnNWClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490462037}
+        m_TargetAssemblyTypeName: Boat, Assembly-CSharp
+        m_MethodName: NWActivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNEClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490462037}
+        m_TargetAssemblyTypeName: Boat, Assembly-CSharp
+        m_MethodName: NEActivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSEClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490462037}
+        m_TargetAssemblyTypeName: Boat, Assembly-CSharp
+        m_MethodName: SEActivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnSWClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1996877483
 GameObject:
   m_ObjectHideFlags: 0
