@@ -5,14 +5,15 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class InputUDPPacket
 {
-    char nw;
-    char ne;
-    char se;
-    char sw;
+    public string nw = "0";
+    public string ne = "0";
+    public string se = "0";
+    public string sw = "0";
 
     public override string ToString()
     {
@@ -31,6 +32,13 @@ public class BoatNetworkInput : MonoBehaviour
 
     public string lastReceivedUDPPacket = "";
     public string allReceivedUDPPackets = ""; // clean up this from time to time!
+
+    public UnityEvent OnNWClick;
+    public UnityEvent OnNEClick;
+    public UnityEvent OnSEClick;
+    public UnityEvent OnSWClick;
+
+    private InputUDPPacket input = new();
 
     public void Start()
     {
@@ -58,6 +66,11 @@ public class BoatNetworkInput : MonoBehaviour
         receiveThread.Start();
     }
 
+    private void Update()
+    {
+        TriggerInput(input);
+    }
+
     private void ReceiveData()
     {
         client = new UdpClient(port);
@@ -71,10 +84,11 @@ public class BoatNetworkInput : MonoBehaviour
                 string text = Encoding.UTF8.GetString(data);
 
 
-                InputUDPPacket packet = ParseInput(text);
-                lastReceivedUDPPacket = packet.ToString();
+                input = ParseInput(text);
+                lastReceivedUDPPacket = input.ToString();
+                print($"received: {input.ToString()}");
 
-                allReceivedUDPPackets = allReceivedUDPPackets + packet.ToString();
+                allReceivedUDPPackets = allReceivedUDPPackets + input.ToString();
             }
             catch (Exception err)
             {
@@ -102,4 +116,25 @@ public class BoatNetworkInput : MonoBehaviour
             throw e;
         }
     }
+
+    private void TriggerInput(InputUDPPacket packet)
+    {
+        if (Read(packet.nw))
+            OnNWClick?.Invoke();
+
+        if (Read(packet.ne))
+            OnNEClick?.Invoke();
+
+        if (Read(packet.se))
+            OnSEClick?.Invoke();
+
+        if (Read(packet.sw))
+            OnSWClick?.Invoke();
+
+        bool Read(string key)
+        {
+            return key == "1";
+        }
+    }
+
 }
