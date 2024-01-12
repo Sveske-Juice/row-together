@@ -577,6 +577,7 @@ GameObject:
   - component: {fileID: 1490462038}
   - component: {fileID: 1490462037}
   - component: {fileID: 1490462039}
+  - component: {fileID: 1490462040}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -813,6 +814,21 @@ MonoBehaviour:
   m_DefaultActionMap: Playing
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1490462040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490462031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18099d08f64c9fa7681ed95b18927766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 8051
+  lastReceivedUDPPacket: 
+  allReceivedUDPPackets: 
 --- !u!1 &1996877483
 GameObject:
   m_ObjectHideFlags: 0
