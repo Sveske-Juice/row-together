@@ -40,7 +40,7 @@ public class BoatNetworkInput : MonoBehaviour
     // OnGUI
     void OnGUI()
     {
-        string ipv4 = NetworkManager.singleton.networkAddress;
+        string ipv4 = IPManager.GetIP(ADDRESSFAM.IPv4);
         Rect rectObj = new Rect(40, 10, 200, 400);
         GUIStyle style = new GUIStyle();
         style.alignment = TextAnchor.UpperLeft;
@@ -101,6 +101,5 @@ public class BoatNetworkInput : MonoBehaviour
             Debug.LogError($"Invalid input map packet from network controller: {inputmap}");
             throw e;
         }
-        return null;
     }
 }
