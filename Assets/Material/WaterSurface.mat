@@ -54,12 +54,12 @@ Material:
     - _Float: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleDensity: 3.68
-    - _RippleSlimness: 4.63
-    - _RippleSpeed: 5.03
+    - _RippleDensity: 5.36
+    - _RippleSlimness: 5.4
+    - _RippleSpeed: 1.54
     - _WaterSpeed: 0.05
     m_Colors:
     - _BaseColor: {r: 0.31038624, g: 0.58022416, b: 0.8773585, a: 0}
-    - _DistortStrength: {r: 0, g: 0, b: 0, a: 0}
+    - _DistortStrength: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _RippleColor: {r: 0.4229263, g: 2.00133, b: 3.320755, a: 0}
   m_BuildTextureStacks: []
