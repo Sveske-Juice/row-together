@@ -26,12 +26,12 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
     private void OnEnable()
     {
-        Spline.Changed += BuildWaterSurface;
+        Spline.Changed += BuildWaterSurfaces;
     }
 
     private void OnDisable()
     {
-        Spline.Changed -= BuildWaterSurface;
+        Spline.Changed -= BuildWaterSurfaces;
     }
 
     private (List<Vector3>, List<Vector3>) GetVerts(int knotIdx)
@@ -68,8 +68,9 @@ public class WaterSurfaceGenerator : MonoBehaviour
         v2 = position + (-right * width);
     }
 
-    private void BuildWaterSurface(Spline splineChanged, int knotIdx, SplineModification modification)
+    private void BuildWaterSurfaces(Spline splineChanged, int knotIdx, SplineModification modification)
     {
+        if (knotIdx == -1) return;
         if (splineChanged != splineContainer.Spline) return;
 
         GameObject go = new GameObject($"Water Surface {knotIdx}");
@@ -104,38 +105,50 @@ public class WaterSurfaceGenerator : MonoBehaviour
         int length = surfaceVertsP1.Count;
         Debug.Log($"knotIdx: {knotIdx}, res: {resolution}, v len: {surfaceVertsP1.Count}");
 
-        // Connect previous water surface to this
+        // Generate junction between two surfaces
         if (prevWaterSurface != null)
         {
             Mesh prevWaterMesh = prevWaterSurface.GetComponent<MeshFilter>().mesh;
             Vector3[] vertices = prevWaterMesh.vertices;
 
-            vertices[vertices.Length - 1] = surfaceVertsP2[0];
-            vertices[vertices.Length - 2] = surfaceVertsP1[0];
+            Vector3 p1 = vertices[vertices.Length - 2];
+            Vector3 p2 = vertices[vertices.Length - 1];
+            Vector3 p3 = surfaceVertsP1[0];
+            Vector3 p4 = surfaceVertsP2[0];
+            int t1 = 0;
+            int t2 = 2;
+            int t3 = 3;
 
-            prevWaterMesh.SetVertices(vertices);
-            prevWaterSurface.GetComponent<MeshFilter>().mesh = prevWaterMesh;
+            int t4 = 3;
+            int t5 = 1;
+            int t6 = 0;
+
+            GameObject juncGo = new GameObject($"Water junction {knotIdx}");
+            juncGo.transform.SetParent(waterParent);
+            Mesh junction = new Mesh();
+            junction.name = $"Water junction {knotIdx}";
+
+            MeshFilter mf = juncGo.AddComponent<MeshFilter>();
+            MeshRenderer juncmr = juncGo.AddComponent<MeshRenderer>();
+            juncmr.material = waterSurfaceMat;
+
+            junction.SetVertices(new List<Vector3> { p1, p2, p3, p4 });
+            junction.SetUVs(channel: 0, new List<Vector2> { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) });
+            junction.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
+
+            mf.mesh = junction;
         }
 
         Debug.Log(knotIdx);
         float uvOffset = 0f;
-        for (int i = 1; i <= length; i++)
+        for (int i = 1; i < length; i++)
         {
             Vector3 p1 = surfaceVertsP1[i - 1];
             Vector3 p2 = surfaceVertsP2[i - 1];
             Vector3 p3, p4;
 
-            if (i == length)
-            {
-                p3 = surfaceVertsP1[0];
-                p4 = surfaceVertsP2[0];
-
-            }
-            else
-            {
-                p3 = surfaceVertsP1[i];
-                p4 = surfaceVertsP2[i];
-            }
+            p3 = surfaceVertsP1[i];
+            p4 = surfaceVertsP2[i];
 
             int offset = 4 * (i - 1);
 
