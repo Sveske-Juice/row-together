@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine.Assertions;
 
+// WARNING: this code is shit
 public class WaterSurfaceGenerator : MonoBehaviour
 {
     [SerializeField]
@@ -46,7 +47,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
         {
             float t = start + step * i;
 
-            Debug.Log($"t: {t}, step: {step}, start: {start}");
+            // Debug.Log($"t: {t}, step: {step}, start: {start}");
             Vector3 v1, v2;
             SampleSplineWidth(surfaceWidth, t, out v1, out v2);
             v1s.Add(v1);
@@ -77,7 +78,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
         go.transform.SetParent(waterParent);
 
         MeshRenderer mr = go.AddComponent<MeshRenderer>();
-        mr.sharedMaterial = waterSurfaceMat;
+        mr.material = waterSurfaceMat;
         MeshFilter outputMeshFilter = go.AddComponent<MeshFilter>();
 
         Mesh waterSurface = new();
@@ -103,11 +104,11 @@ public class WaterSurfaceGenerator : MonoBehaviour
         Assert.IsTrue(surfaceVertsP1.Count == surfaceVertsP2.Count);
 
         int length = surfaceVertsP1.Count;
-        Debug.Log($"knotIdx: {knotIdx}, res: {resolution}, v len: {surfaceVertsP1.Count}");
 
         // Generate junction between two surfaces
         if (prevWaterSurface != null)
         {
+            //TODO: set water dir for junction
             Mesh prevWaterMesh = prevWaterSurface.GetComponent<MeshFilter>().mesh;
             Vector3[] vertices = prevWaterMesh.vertices;
 
@@ -139,7 +140,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
             mf.mesh = junction;
         }
 
-        Debug.Log(knotIdx);
+        // Generate water surface mesh
         float uvOffset = 0f;
         for (int i = 1; i < length; i++)
         {
@@ -175,6 +176,21 @@ public class WaterSurfaceGenerator : MonoBehaviour
         waterSurface.SetVertices(verts);
         waterSurface.SetUVs(channel: 0, uvs);
         waterSurface.SetTriangles(tris, submesh: 0);
+
+        if (knotIdx > 1)
+        {
+            Vector3 flowDirection = splineChanged.Knots.ElementAt(knotIdx).Position - splineChanged.Knots.ElementAt(knotIdx - 1).Position;
+            flowDirection.Normalize();
+            Vector3 knotPos = splineChanged.ElementAt(knotIdx).Position;
+            // Debug.Log($"knotpos: {knotPos}, dir: {flowDirection}");
+            Debug.DrawRay(knotPos, flowDirection, Color.red, 10f);
+
+            // I have no idea why i need to use vec2(-z, -x) components like that but that how it works ig
+            // times 0.1f because it makes it look weird otherwise
+            // i hate this code...
+            mr.material.SetVector("_WaveDirection", new Vector2(-flowDirection.z, -flowDirection.x * 0.1f));
+        }
+
 
         outputMeshFilter.mesh = waterSurface;
     }
