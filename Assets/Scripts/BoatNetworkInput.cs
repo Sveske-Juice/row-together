@@ -38,7 +38,7 @@ public class BoatNetworkInput : MonoBehaviour
     public UnityEvent OnSEClick;
     public UnityEvent OnSWClick;
 
-    private InputUDPPacket input = new();
+    public InputUDPPacket input = new();
 
     public void Start()
     {
