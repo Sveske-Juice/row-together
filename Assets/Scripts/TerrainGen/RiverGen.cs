@@ -42,7 +42,7 @@ public class RiverGen : MonoBehaviour
             }
             else
             {
-                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + Random.Range(-curveAmount, curveAmount), 0, prevKnot.Position.z + 10));
+                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + Random.Range(-curveAmount, curveAmount), prevKnot.Position.y, prevKnot.Position.z + 10));
             }
             // sc.AddSpline(new Spline());
 

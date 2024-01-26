@@ -7,8 +7,8 @@ public class Paddle : MonoBehaviour
 
     public void Activate(Transform boatTransform, Rigidbody rb)
     {
-        Vector3 force = boatTransform.forward * paddleForce * Time.fixedDeltaTime;
+        Vector3 force = (transform.parent.position - transform.position).normalized * paddleForce * Time.fixedDeltaTime;
 
-        rb.AddForceAtPosition(force, transform.position, ForceMode.Impulse);
+        rb.AddForce(force, ForceMode.Impulse);
     }
 }
