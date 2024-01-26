@@ -34,7 +34,11 @@ public class RiverGen : MonoBehaviour
             BezierKnot nextKnot;
             if (idx == 0)
             {
-                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + 5, 0f), prevKnot.Position.y, prevKnot.Position.z + 5);
+                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + 1f, prevKnot.Position.y, prevKnot.Position.z + 1f));
+            }
+            else if (idx < 4)
+            {
+                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + 5, prevKnot.Position.y, prevKnot.Position.z + 5));
             }
             else
             {
