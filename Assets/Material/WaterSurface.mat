@@ -60,6 +60,7 @@ Material:
     - _WaterSpeed: 0.08
     m_Colors:
     - _BaseColor: {r: 0.31038624, g: 0.58022416, b: 0.8773585, a: 0}
-    - _DistortStrength: {r: 1, g: 1.5, b: 0, a: 0}
+    - _DistortStrength: {r: 0, g: 0, b: 0, a: 0}
     - _RippleColor: {r: 0.4229263, g: 2.00133, b: 3.320755, a: 0}
+    - _WaveDirection: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

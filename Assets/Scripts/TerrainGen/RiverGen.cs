@@ -10,6 +10,7 @@ public class RiverGen : MonoBehaviour
     float timer = 0;
     float cooldown = 30;
     float curveAmount = 8;
+    int idx = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,7 +31,15 @@ public class RiverGen : MonoBehaviour
         if (timer < cooldown)
             timer++;
         else {
-            BezierKnot nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + Random.Range(-curveAmount, curveAmount), 0, prevKnot.Position.z + 10));
+            BezierKnot nextKnot;
+            if (idx == 0)
+            {
+                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + 5, 0f), prevKnot.Position.y, prevKnot.Position.z + 5);
+            }
+            else
+            {
+                nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + Random.Range(-curveAmount, curveAmount), 0, prevKnot.Position.z + 10));
+            }
             // sc.AddSpline(new Spline());
 
             sc.Splines[sc.Splines.Count - 1].Add(nextKnot);
@@ -40,6 +49,7 @@ public class RiverGen : MonoBehaviour
 
             prevKnot = nextKnot;
             timer = 0; //Reset time
+            idx++;
         }
     }
 }
