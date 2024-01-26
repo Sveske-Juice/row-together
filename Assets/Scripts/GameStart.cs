@@ -8,15 +8,14 @@ public class GameStart : MonoBehaviour
 
     void Update()
     {
-        if (input.input.nw == "1" && input.input.ne == "1" && input.input.sw == "1" && input.input.se == "1")
+        if (input.input.nw == "1" && input.input.ne == "1" && input.input.sw == "1" && input.input.se == "1" || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.O))
         {
             startDelay += Time.deltaTime;
             if (startDelay >= 1.5)
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("Game");
             }
         }
-
         else
         {
             startDelay = 0;
