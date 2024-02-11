@@ -108,7 +108,6 @@ public class WaterSurfaceGenerator : MonoBehaviour
         // Generate junction between two surfaces
         if (prevWaterSurface != null)
         {
-            //TODO: set water dir for junction
             Mesh prevWaterMesh = prevWaterSurface.GetComponent<MeshFilter>().mesh;
             Vector3[] vertices = prevWaterMesh.vertices;
 
@@ -132,6 +131,20 @@ public class WaterSurfaceGenerator : MonoBehaviour
             MeshFilter mf = juncGo.AddComponent<MeshFilter>();
             MeshRenderer juncmr = juncGo.AddComponent<MeshRenderer>();
             juncmr.material = waterSurfaceMat;
+
+            if (knotIdx > 1)
+            {
+                Vector3 flowDirection = splineChanged.Knots.ElementAt(knotIdx).Position - splineChanged.Knots.ElementAt(knotIdx - 1).Position;
+                flowDirection.Normalize();
+                Vector3 knotPos = splineChanged.ElementAt(knotIdx).Position;
+                // Debug.Log($"knotpos: {knotPos}, dir: {flowDirection}");
+                Debug.DrawRay(knotPos, flowDirection, Color.red, 10f);
+
+                // I have no idea why i need to use vec2(-z, -x) components like that but that how it works ig
+                // times 0.1f because it makes it look weird otherwise
+                // i hate this code...
+                juncmr.material.SetVector("_WaveDirection", new Vector2(-flowDirection.z, -flowDirection.x * 0.1f));
+            }
 
             junction.SetVertices(new List<Vector3> { p1, p2, p3, p4 });
             junction.SetUVs(channel: 0, new List<Vector2> { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) });
