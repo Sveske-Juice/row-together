@@ -132,6 +132,13 @@ public class WaterSurfaceGenerator : MonoBehaviour
             MeshRenderer juncmr = juncGo.AddComponent<MeshRenderer>();
             juncmr.material = waterSurfaceMat;
 
+
+            junction.SetVertices(new List<Vector3> { p1, p2, p3, p4 });
+            junction.SetUVs(channel: 0, new List<Vector2> { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) });
+            junction.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
+
+            mf.mesh = junction;
+
             if (knotIdx > 1)
             {
                 Vector3 flowDirection = splineChanged.Knots.ElementAt(knotIdx).Position - splineChanged.Knots.ElementAt(knotIdx - 1).Position;
@@ -144,13 +151,12 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 // times 0.1f because it makes it look weird otherwise
                 // i hate this code...
                 juncmr.material.SetVector("_WaveDirection", new Vector2(-flowDirection.z, -flowDirection.x * 0.1f));
+
+                Vector3 meshBounds = mf.mesh.bounds.size;
+                float surfaceSize = Mathf.Max(meshBounds.x, meshBounds.z);
+
+                juncmr.material.SetFloat("_SurfaceSize", surfaceSize);
             }
-
-            junction.SetVertices(new List<Vector3> { p1, p2, p3, p4 });
-            junction.SetUVs(channel: 0, new List<Vector2> { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) });
-            junction.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
-
-            mf.mesh = junction;
         }
 
         // Generate water surface mesh
@@ -189,6 +195,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
         waterSurface.SetVertices(verts);
         waterSurface.SetUVs(channel: 0, uvs);
         waterSurface.SetTriangles(tris, submesh: 0);
+        outputMeshFilter.mesh = waterSurface;
 
         if (knotIdx > 1)
         {
@@ -202,9 +209,11 @@ public class WaterSurfaceGenerator : MonoBehaviour
             // times 0.1f because it makes it look weird otherwise
             // i hate this code...
             mr.material.SetVector("_WaveDirection", new Vector2(-flowDirection.z, -flowDirection.x * 0.1f));
+
+            Vector3 meshBounds = outputMeshFilter.mesh.bounds.size;
+            float surfaceSize = Mathf.Max(meshBounds.x, meshBounds.z);
+
+            mr.material.SetFloat("_SurfaceSize", surfaceSize);
         }
-
-
-        outputMeshFilter.mesh = waterSurface;
     }
 }

@@ -9,7 +9,7 @@ public class RiverGen : MonoBehaviour
     public BezierKnot prevKnot;
     float timer = 0;
     float cooldown = 30;
-    float curveAmount = 8;
+    float curveAmount = 5;
     int idx = 0;
 
     // Start is called before the first frame update

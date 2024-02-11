@@ -55,13 +55,15 @@ Material:
     - _GeometryOffsettingMultiplier: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleDensity: 43.4
-    - _RippleSlimness: 6.93
+    - _RippleDensity: 480
+    - _RippleSlimness: 8
     - _RippleSpeed: 8.81
+    - _SurfaceSize: 3
     - _WaterSpeed: 0.00000001
     m_Colors:
     - _BaseColor: {r: 0.31038624, g: 0.58022416, b: 0.8773585, a: 0}
     - _DistortStrength: {r: 0, g: 0, b: 0, a: 0}
     - _RippleColor: {r: 0.4229263, g: 2.00133, b: 3.320755, a: 0}
-    - _WaveDirection: {r: -0.05, g: 0.1, b: 0, a: 0}
+    - _SurfaceSize: {r: 1, g: 1, b: 0, a: 0}
+    - _WaveDirection: {r: 0, g: 0.07, b: 0, a: 0}
   m_BuildTextureStacks: []
