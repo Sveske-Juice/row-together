@@ -29,6 +29,14 @@ public class Boat : MonoBehaviour
     public void SEActivate() => ActivatePaddle(Rotation.SE);
     public void SWActivate() => ActivatePaddle(Rotation.SW);
 
+    void Update()
+    {
+        // FIXME: this is so bad but somehow rb rotation constraints don't want
+        // to do their fu**ing job so idgaf
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+        transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
+    }
+
     void FixedUpdate()
     {
         // Push boat in river direction
