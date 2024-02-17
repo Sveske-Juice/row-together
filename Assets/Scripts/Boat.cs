@@ -33,7 +33,6 @@ public class Boat : MonoBehaviour
     {
         // FIXME: this is so bad but somehow rb rotation constraints don't want
         // to do their fu**ing job so idgaf
-        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
     }
 
@@ -52,7 +51,7 @@ public class Boat : MonoBehaviour
         {
             if (splineContainer.Spline.Knots.Count() <= 1) return;
 
-            flowDirection = splineContainer.Spline.Knots.ElementAt(closestSlineIdxToBoat+1).Position - new float3(transform.position);
+            flowDirection = -splineContainer.Spline.Knots.ElementAt(closestSlineIdxToBoat+1).Position - new float3(transform.position);
         }
         flowDirection.y = 0f;
         flowDirection.Normalize();
@@ -69,6 +68,7 @@ public class Boat : MonoBehaviour
 
         // Lerp towards target rotation
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(transform.forward, flowDirection), rotateSpeed * Time.fixedDeltaTime);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
     }
 
     int IndexOfClosestPoint(SplineContainer sc, Vector3 wsPos)
