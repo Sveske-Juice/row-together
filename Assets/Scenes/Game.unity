@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd980260fa562a438e9b088f160b1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   paddleForce: 1
 --- !u!4 &120945689
 Transform:
@@ -302,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd980260fa562a438e9b088f160b1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   paddleForce: 1
 --- !u!4 &276630889
 Transform:
@@ -420,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd980260fa562a438e9b088f160b1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   paddleForce: 1
 --- !u!4 &428714635
 Transform:
@@ -1101,6 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd980260fa562a438e9b088f160b1a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   paddleForce: 1
 --- !u!4 &683346260
 Transform:
@@ -2621,6 +2625,36 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7d138ae489b0d8bd182edd90a496e528, type: 2}
+    - target: {fileID: 5464920867832342928, guid: aa41ec68d81855753828f24d984ebe24,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9,
+        type: 2}
+    - target: {fileID: 6185885166914985380, guid: aa41ec68d81855753828f24d984ebe24,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9,
+        type: 2}
+    - target: {fileID: 6724618632338006508, guid: aa41ec68d81855753828f24d984ebe24,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9,
+        type: 2}
+    - target: {fileID: 7911749671033298607, guid: aa41ec68d81855753828f24d984ebe24,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9,
+        type: 2}
+    - target: {fileID: 8099257784457672426, guid: aa41ec68d81855753828f24d984ebe24,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9,
+        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

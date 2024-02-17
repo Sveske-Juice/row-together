@@ -141,6 +141,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oar
       objectReference: {fileID: 0}
+    - target: {fileID: 4888609728619929471, guid: ffdf3f79bf345a640916513f9b2497bf,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -237,6 +242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Oar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888609728619929471, guid: ffdf3f79bf345a640916513f9b2497bf,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
@@ -335,6 +345,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Oar
       objectReference: {fileID: 0}
+    - target: {fileID: 4888609728619929471, guid: ffdf3f79bf345a640916513f9b2497bf,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -431,6 +446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Oar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4888609728619929471, guid: ffdf3f79bf345a640916513f9b2497bf,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
