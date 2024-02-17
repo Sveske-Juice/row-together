@@ -8,6 +8,7 @@ using UnityEngine.Assertions;
 // WARNING: this code is shit
 public class WaterSurfaceGenerator : MonoBehaviour
 {
+    public Material colMat;
     [SerializeField]
     private SplineContainer splineContainer;
 
@@ -87,6 +88,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
         List<int> tris = new();
         List<Vector2> uvs = new();
 
+
         var waterSurfaceVerts = GetVerts(knotIdx);
         List<Vector3> surfaceVertsP1 = waterSurfaceVerts.Item1;
         List<Vector3> surfaceVertsP2 = waterSurfaceVerts.Item2;
@@ -132,12 +134,12 @@ public class WaterSurfaceGenerator : MonoBehaviour
             MeshRenderer juncmr = juncGo.AddComponent<MeshRenderer>();
             juncmr.material = waterSurfaceMat;
 
-
             junction.SetVertices(new List<Vector3> { p1, p2, p3, p4 });
             junction.SetUVs(channel: 0, new List<Vector2> { new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 0), new Vector2(1, 1) });
             junction.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
 
             mf.mesh = junction;
+
 
             if (knotIdx > 1)
             {
@@ -156,8 +158,58 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 float surfaceSize = Mathf.Max(meshBounds.x, meshBounds.z);
 
                 juncmr.material.SetFloat("_SurfaceSize", surfaceSize);
+
+                // Collider bounderies
+                GameObject juncCol1 = new GameObject($"Water junction collider {knotIdx} (1)");
+                juncCol1.transform.SetParent(waterParent);
+                GameObject juncCol2 = new GameObject($"Water junction collider {knotIdx} (2)");
+                juncCol2.transform.SetParent(waterParent);
+
+                MeshFilter juncCol1Mf = juncCol1.AddComponent<MeshFilter>();
+                MeshFilter juncCol2Mf = juncCol2.AddComponent<MeshFilter>();
+
+                Mesh juncCol1Mesh = new();
+                juncCol1Mesh.name = "Water junction col 1";
+                Mesh juncCol2Mesh = new();
+                juncCol2Mesh.name = "Water junction col 2";
+
+                juncCol1Mesh.SetVertices(new List<Vector3> { p1, new Vector3(p1.x, p1.y + 2f, p1.z), p3, new Vector3(p3.x, p3.y + 2f, p3.z)});
+                juncCol1Mesh.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
+                juncCol1Mf.mesh = juncCol1Mesh;
+
+                juncCol1.AddComponent<MeshCollider>();
+
+                juncCol2Mesh.SetVertices(new List<Vector3> { p2, new Vector3(p2.x, p2.y + 2f, p2.z), p4, new Vector3(p4.x, p4.y + 2f, p4.z) });
+                juncCol2Mesh.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
+                juncCol2Mf.mesh = juncCol2Mesh;
+
+                juncCol2.AddComponent<MeshCollider>();
+
+                // debug
+                // juncCol1.AddComponent<MeshRenderer>();
+                // juncCol2.AddComponent<MeshRenderer>();
             }
         }
+
+
+        GameObject col1 = new GameObject($"Water junction collider {knotIdx} (1)");
+        col1.transform.SetParent(waterParent);
+        GameObject col2 = new GameObject($"Water junction collider {knotIdx} (2)");
+        col2.transform.SetParent(waterParent);
+
+        MeshFilter col1Mf = col1.AddComponent<MeshFilter>();
+        MeshFilter col2Mf = col2.AddComponent<MeshFilter>();
+
+        Mesh col1Mesh = new();
+        col1Mesh.name = "Water col 1";
+        Mesh col2Mesh = new();
+        col2Mesh.name = "Water col 2";
+
+        List<Vector3> col1Verts = new();
+        List<int> col1Tris = new();
+
+        List<Vector3> col2Verts = new();
+        List<int> col2Tris = new();
 
         // Generate water surface mesh
         float uvOffset = 0f;
@@ -188,6 +240,14 @@ public class WaterSurfaceGenerator : MonoBehaviour
             uvs.AddRange(new List<Vector2> { new Vector2(uvOffset, 0), new Vector2(uvOffset, 1), new Vector2(uvDist, 0), new Vector2(uvDist,1) });
 
             uvOffset += distance;
+
+            // Collider bounderies
+            if (knotIdx < 1) continue;
+            col1Verts.AddRange(new List<Vector3> { p1, new Vector3(p1.x, p1.y + 2f, p1.z), p3, new Vector3(p3.x, p3.y + 2f, p3.z)});
+            col1Tris.AddRange(new List<int> { t1, t2, t3, t4, t5, t6 });
+
+            col2Verts.AddRange(new List<Vector3> { p2, new Vector3(p2.x, p2.y + 2f, p2.z), p4, new Vector3(p4.x, p4.y + 2f, p4.z) });
+            col2Tris.AddRange(new List<int> { t1, t2, t3, t4, t5, t6 });
         }
 
         prevWaterSurface = go;
@@ -214,6 +274,24 @@ public class WaterSurfaceGenerator : MonoBehaviour
             float surfaceSize = Mathf.Max(meshBounds.x, meshBounds.z);
 
             mr.material.SetFloat("_SurfaceSize", surfaceSize);
+
+            // collider shit
+            col1Mesh.SetVertices(col1Verts);
+            col2Mesh.SetVertices(col2Verts);
+
+            col1Mesh.SetTriangles(col1Tris, 0);
+            col2Mesh.SetTriangles(col2Tris, 0);
+
+            col1Mf.mesh = col1Mesh;
+            col2Mf.mesh = col2Mesh;
+            col1.AddComponent<MeshCollider>();
+            col2.AddComponent<MeshCollider>();
+
+            // debug
+            // var col1Mr = col1.AddComponent<MeshRenderer>();
+            // var col2Mr = col2.AddComponent<MeshRenderer>();
+            // col1Mr.material = colMat;
+            // col2Mr.material = colMat;
         }
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029127, g: 0.22572401, b: 0.3069303, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -886,6 +886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8accb45079c0ca894a77f9add67cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colMat: {fileID: 2100000, guid: 06b662223139a11c8962f28c120cf7ba, type: 2}
   splineContainer: {fileID: 473352080}
   waterParent: {fileID: 112382474}
   resolution: 10
