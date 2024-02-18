@@ -51,7 +51,7 @@ public class Boat : MonoBehaviour
         {
             if (splineContainer.Spline.Knots.Count() <= 1) return;
 
-            flowDirection = -splineContainer.Spline.Knots.ElementAt(closestSlineIdxToBoat+1).Position - new float3(transform.position);
+            flowDirection = splineContainer.Spline.Last().Position - new float3(transform.position);
         }
         flowDirection.y = 0f;
         flowDirection.Normalize();

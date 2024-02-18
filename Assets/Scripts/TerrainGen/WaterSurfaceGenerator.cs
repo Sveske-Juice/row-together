@@ -78,6 +78,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
     {
         if (knotIdx == -1) return;
         if (splineChanged != splineContainer.Spline) return;
+        if (modification != SplineModification.KnotInserted) return;
 
         GameObject go = new GameObject($"Water Surface {knotIdx}");
         go.transform.SetParent(waterParent);
