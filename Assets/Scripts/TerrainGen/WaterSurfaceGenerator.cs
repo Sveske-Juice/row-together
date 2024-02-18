@@ -5,9 +5,16 @@ using System.Linq;
 using Unity.Mathematics;
 using UnityEngine.Assertions;
 
-// WARNING: this code is shit
+// WARNING: this code is shit idgaf about this project
 public class WaterSurfaceGenerator : MonoBehaviour
 {
+    // NOTE: since spline instantiate component is retarded we have to this ourselves
+    [Header("Tree spawning")]
+    public GameObject[] treePrefabs;
+    public float spawnChance = 0.4f;
+    public float distFromSplineCenter = 5f;
+
+    [Header("Side collisions")]
     public bool debug = false;
     public Material colMat;
     public float colHeight = 10f;
@@ -40,7 +47,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
         Spline.Changed -= BuildWaterSurfaces;
     }
 
-    private (List<Vector3>, List<Vector3>) GetVerts(int knotIdx)
+    private (List<Vector3>, List<Vector3>) GetVerts(int knotIdx, bool spawnTrees = true)
     {
         List<Vector3> v1s = new(resolution);
         List<Vector3> v2s = new(resolution);
@@ -57,6 +64,14 @@ public class WaterSurfaceGenerator : MonoBehaviour
             SampleSplineWidth(surfaceWidth, t, out v1, out v2);
             v1s.Add(v1);
             v2s.Add(v2);
+
+            if (spawnTrees && knotIdx > 1)
+            {
+                if (UnityEngine.Random.Range(0f, 1f) < spawnChance) continue;
+                SampleSplineWidth(distFromSplineCenter, t, out v1, out v2);
+                var tree1 = Instantiate(treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length - 1)], v1, Quaternion.identity, waterParent);
+                var tree2 = Instantiate(treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length - 1)], v2, Quaternion.identity, waterParent);
+            }
         }
 
         return (v1s, v2s);
@@ -287,6 +302,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
             col2Verts.AddRange(new List<Vector3> { p2, new Vector3(p2.x, p2.y + colHeight, p2.z), p4, new Vector3(p4.x, p4.y + colHeight, p4.z) });
             col2Tris.AddRange(new List<int> { t1, t2, t3, t4, t5, t6 });
+
         }
 
         prevWaterSurface = go;

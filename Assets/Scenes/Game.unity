@@ -475,6 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6990cc87a1fa5864a98b55085902cd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boat: {fileID: 616765342}
+  spawnNewDistThreshold: 15
   sc: {fileID: 473352080}
   prevKnot:
     Position:
@@ -559,7 +561,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473352068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
   m_Name: 
@@ -722,7 +724,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473352068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
   m_Name: 
@@ -894,13 +896,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8accb45079c0ca894a77f9add67cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  treePrefabs:
+  - {fileID: 2560309493006114087, guid: 1e49415e4ca8c874f97c5ef36c9d6abe, type: 3}
+  - {fileID: 7725974178785476936, guid: bbf6e70e94acf91478188331554db1f8, type: 3}
+  - {fileID: 2279004996259451053, guid: 33a4a8a6ac0175343b63eb5d44331986, type: 3}
+  - {fileID: 5438264292806206255, guid: ab7259fd72e171a408ad0bfe8461ad9e, type: 3}
+  - {fileID: 4590117989984753312, guid: f832ba6b61b04444fb67feac9be40435, type: 3}
+  - {fileID: 8362555537990794043, guid: d6d52761d30faeb4ebb92d49bdf522eb, type: 3}
+  - {fileID: 5136065240264017471, guid: 06bcd250d82e3be4fb29fce7ea80a3a6, type: 3}
+  - {fileID: 5709707007491728188, guid: 0cf1a4ad0217c1347a94c8d6b427c8f8, type: 3}
+  - {fileID: 472625430139290996, guid: fce1c7b0769d3eb4db0aa83df11a43b8, type: 3}
+  - {fileID: 710887772112526412, guid: c09366930cf854a4b9b0f3ff5e627bbf, type: 3}
+  - {fileID: 9005189654230790600, guid: 02002a83d54286b4b8dd338d0763f703, type: 3}
+  - {fileID: 1140599444971779283, guid: d51d80e31537f4346961f21666cf0321, type: 3}
+  - {fileID: 4576621323995359508, guid: 4cc4e5224eec284448fc68c7b6c85785, type: 3}
+  - {fileID: 7466907917320620420, guid: 7d06660fcf10d4d48bd04c3973bba218, type: 3}
+  - {fileID: 4298645534727662540, guid: ab1e02a42c439984ca6460235921da5d, type: 3}
+  - {fileID: 4821834868313721212, guid: f0ebd1e26e9e50f4e96509c755143016, type: 3}
+  - {fileID: 3447716963786116469, guid: d262e6d0d49b08b469b9fe144727cda9, type: 3}
+  - {fileID: 8503145183610829058, guid: ef13d7a7d23097843a15593d4ccd0ed7, type: 3}
+  - {fileID: 9079053036084121564, guid: 9e703670689bc9340b04b817a6939fce, type: 3}
+  - {fileID: 8446154261825829458, guid: ae4e66883888f73499ab0bccc0e2f821, type: 3}
+  - {fileID: 8474470941662325506, guid: a3c3a6f62fb10134cb3705b21ed8e404, type: 3}
+  - {fileID: 4224550552461803436, guid: c0df1619d906dcd47a7c45ebc4f8a5cf, type: 3}
+  - {fileID: 6348982156735145720, guid: ea915687b72b60a4ab9a90b41f697d00, type: 3}
+  - {fileID: 187788751226180831, guid: 2a0f45e54113bc449be7d481efcd901c, type: 3}
+  spawnChance: 0.08
+  distFromSplineCenter: 5
   debug: 0
   colMat: {fileID: 2100000, guid: 06b662223139a11c8962f28c120cf7ba, type: 2}
   colHeight: 10
   sideWallMat: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9, type: 2}
   splineContainer: {fileID: 473352080}
   waterParent: {fileID: 112382474}
-  resolution: 10
+  resolution: 5
   surfaceWidth: 3
   waterSurfaceMat: {fileID: 2100000, guid: 7d138ae489b0d8bd182edd90a496e528, type: 2}
 --- !u!33 &473352079
