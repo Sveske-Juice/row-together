@@ -5,6 +5,8 @@ using Unity.Mathematics;
 
 public class Boat : MonoBehaviour
 {
+    public static Boat Instance { get; private set; }
+
     [Header("References")]
     [SerializeField] private Rigidbody rb;
 
@@ -28,6 +30,17 @@ public class Boat : MonoBehaviour
     public void NEActivate() => ActivatePaddle(Rotation.NE);
     public void SEActivate() => ActivatePaddle(Rotation.SE);
     public void SWActivate() => ActivatePaddle(Rotation.SW);
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     void Update()
     {

@@ -927,6 +927,7 @@ MonoBehaviour:
   colMat: {fileID: 2100000, guid: 06b662223139a11c8962f28c120cf7ba, type: 2}
   colHeight: 10
   sideWallMat: {fileID: 13400000, guid: ed5caf9c5ccf1b3de9bb000cb7a5ffd9, type: 2}
+  destroyDist: 35
   splineContainer: {fileID: 473352080}
   waterParent: {fileID: 112382474}
   resolution: 5

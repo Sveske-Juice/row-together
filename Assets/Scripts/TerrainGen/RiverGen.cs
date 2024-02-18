@@ -1,10 +1,12 @@
 using System.Linq;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 
 public class RiverGen : MonoBehaviour
 {
+    public static event Action<BezierKnot> NewPieceSpawned;
     public Transform boat;
     public float spawnNewDistThreshold = 15f;
     public SplineContainer sc;
@@ -48,11 +50,12 @@ public class RiverGen : MonoBehaviour
         }
         else
         {
-            nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + Random.Range(-curveAmount, curveAmount), prevKnot.Position.y, prevKnot.Position.z + 10));
+            nextKnot = new BezierKnot(new Vector3(prevKnot.Position.x + UnityEngine.Random.Range(-curveAmount, curveAmount), prevKnot.Position.y, prevKnot.Position.z + 10));
         }
         // sc.AddSpline(new Spline());
 
         sc.Spline.Add(nextKnot);
+        NewPieceSpawned?.Invoke(nextKnot);
 
         // Connect the knots of each spline
         // sc.KnotLinkCollection.Link(new SplineKnotIndex(sc.Splines.Count - 1, 1), new SplineKnotIndex(sc.Splines.Count, 0));

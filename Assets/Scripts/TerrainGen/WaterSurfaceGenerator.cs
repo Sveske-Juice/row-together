@@ -20,6 +20,8 @@ public class WaterSurfaceGenerator : MonoBehaviour
     public float colHeight = 10f;
     public PhysicMaterial sideWallMat;
 
+    public float destroyDist = 20f;
+
     [SerializeField]
     private SplineContainer splineContainer;
 
@@ -71,6 +73,9 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 SampleSplineWidth(distFromSplineCenter, t, out v1, out v2);
                 var tree1 = Instantiate(treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length - 1)], v1, Quaternion.identity, waterParent);
                 var tree2 = Instantiate(treePrefabs[UnityEngine.Random.Range(0, treePrefabs.Length - 1)], v2, Quaternion.identity, waterParent);
+
+                tree1.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, 40f);
+                tree2.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, 40f);
             }
         }
 
@@ -160,6 +165,8 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
             mf.mesh = junction;
 
+            juncGo.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+
 
             if (knotIdx > 1)
             {
@@ -232,6 +239,11 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 jucCol11Col.material = sideWallMat;
                 juncCol22Col.material = sideWallMat;
 
+                juncCol1.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+                juncCol11.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+                juncCol2.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+                juncCol22.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+
                 // debug
                 if (debug)
                 {
@@ -244,9 +256,9 @@ public class WaterSurfaceGenerator : MonoBehaviour
         }
 
 
-        GameObject col1 = new GameObject($"Water junction collider {knotIdx} (1)");
+        GameObject col1 = new GameObject($"Water collider {knotIdx} (1)");
         col1.transform.SetParent(waterParent);
-        GameObject col2 = new GameObject($"Water junction collider {knotIdx} (2)");
+        GameObject col2 = new GameObject($"Water collider {knotIdx} (2)");
         col2.transform.SetParent(waterParent);
 
         MeshFilter col1Mf = col1.AddComponent<MeshFilter>();
@@ -306,6 +318,10 @@ public class WaterSurfaceGenerator : MonoBehaviour
         }
 
         prevWaterSurface = go;
+
+        go.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+        col1.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
+        col2.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
 
         waterSurface.SetVertices(verts);
         waterSurface.SetUVs(channel: 0, uvs);
