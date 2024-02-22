@@ -394,6 +394,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
                 var obj = Instantiate(rocks[(int)UnityEngine.Random.Range(0f, rocks.Length - 1)]);
                 obj.transform.position = new Vector3(x, 2, z);
+                obj.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, 40f);
             }
         }
     }
