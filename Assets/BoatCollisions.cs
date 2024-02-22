@@ -31,9 +31,6 @@ public class BoatCollisions : MonoBehaviour
             print("dead");
         }
 
-        print("hp: " + hp);
-        print("sped: " + rb.velocity.magnitude);
-
         for (int i = 0; i < hpIcons.Length; i++)
         {
             hpIcons[i].SetActive(false);
