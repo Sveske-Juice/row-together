@@ -68,7 +68,11 @@ public class BoatNetworkInput : MonoBehaviour
 
     private void Update()
     {
-        TriggerInput(input);
+        if (input != null)
+        {
+            TriggerInput(input);
+            input = null;
+        }
     }
 
     private void ReceiveData()

@@ -14,6 +14,7 @@ public class Paddle : MonoBehaviour
 
     public void Activate(Transform boatTransform, Rigidbody rb)
     {
+        Debug.Log("Activar");
         animator.Play("Row");
         Vector3 force = (transform.parent.position - transform.position).normalized * paddleForce;
         force.y = 0f;
