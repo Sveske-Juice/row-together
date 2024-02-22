@@ -24,9 +24,12 @@ public class RiverGen : MonoBehaviour
 
     private void Start()
     {
-        BezierKnot startPoint = new BezierKnot(new Vector3(1f, 1f, 1f));
+        BezierKnot startPoint = new BezierKnot(new Vector3(4f, 1f, 3.5f-10f));
         sc.Spline.Add(startPoint);
         prevKnot = startPoint;
+        BezierKnot secondPoint = new BezierKnot(new Vector3(4f, 1f, 13.5f));
+        sc.Spline.Add(secondPoint);
+        prevKnot = secondPoint;
     }
 
     bool ShouldSpawnNewPiece()
