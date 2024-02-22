@@ -411,6 +411,66 @@ PrefabInstance:
       propertyPath: splineContainer
       value: 
       objectReference: {fileID: 473352080}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].time
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[0].inSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].inSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[0].outSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].outSlope
+      value: 0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910168286182057310, guid: b3f4b11486aa4c34a8abcebe123f39b2,
+        type: 3}
+      propertyPath: streamDrag.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8568353609900795881, guid: b3f4b11486aa4c34a8abcebe123f39b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3093,7 +3153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2122130504}
   splineContainer: {fileID: 473352080}
-  streamDrag: 0.5
+  streamDrag:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   keepOnPathDrag: 0.1
   maxSpeed: 6
   rotateSpeed: 1

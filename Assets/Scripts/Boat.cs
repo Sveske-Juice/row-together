@@ -13,7 +13,8 @@ public class Boat : MonoBehaviour
     [SerializeField]
     private SplineContainer splineContainer;
 
-    [SerializeField] float streamDrag = 1f;
+    [SerializeField] AnimationCurve streamDrag;
+
     [SerializeField] float keepOnPathDrag = 1f;
     [SerializeField] float maxSpeed = 8f;
     [SerializeField] float rotateSpeed = 1f;
@@ -74,7 +75,7 @@ public class Boat : MonoBehaviour
         keepOnPathForce.y = 0f;
         keepOnPathForce.Normalize();
 
-        Vector3 netForce = (flowDirection * streamDrag) + (keepOnPathForce * keepOnPathDrag);
+        Vector3 netForce = (flowDirection * streamDrag.Evaluate(Boat.Instance.transform.position.z)) + (keepOnPathForce * keepOnPathDrag);
 
         rb.AddForce(netForce);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
