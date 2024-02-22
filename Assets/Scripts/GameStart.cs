@@ -6,6 +6,10 @@ public class GameStart : MonoBehaviour
     float startDelay = 0;
     public BoatNetworkInput input;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     void Update()
     {
         if (input.input.nw == "1" && input.input.ne == "1" && input.input.sw == "1" && input.input.se == "1" || Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.I) && Input.GetKey(KeyCode.O))

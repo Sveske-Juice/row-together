@@ -189,8 +189,10 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 // Collider bounderies
                 GameObject juncCol1 = new GameObject($"Water junction collider {knotIdx} (1)");
                 juncCol1.transform.SetParent(waterParent);
+                juncCol1.tag = "Obstacle";
                 GameObject juncCol2 = new GameObject($"Water junction collider {knotIdx} (2)");
                 juncCol2.transform.SetParent(waterParent);
+                juncCol2.tag = "Obstacle";
 
                 MeshFilter juncCol1Mf = juncCol1.AddComponent<MeshFilter>();
                 MeshFilter juncCol2Mf = juncCol2.AddComponent<MeshFilter>();
@@ -214,8 +216,10 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
                 GameObject juncCol11 = new GameObject($"Water junction collider {knotIdx} (1), redouble");
                 juncCol11.transform.SetParent(waterParent);
+                juncCol11.tag = "Obstacle";
                 GameObject juncCol22 = new GameObject($"Water junction collider {knotIdx} (2), redouble");
                 juncCol22.transform.SetParent(waterParent);
+                juncCol22.tag = "Obstacle";
 
                 MeshFilter juncCol1Mf1 = juncCol11.AddComponent<MeshFilter>();
                 MeshFilter juncCol2Mf2 = juncCol22.AddComponent<MeshFilter>();
@@ -258,8 +262,10 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
         GameObject col1 = new GameObject($"Water collider {knotIdx} (1)");
         col1.transform.SetParent(waterParent);
+        col1.tag = "Obstacle";
         GameObject col2 = new GameObject($"Water collider {knotIdx} (2)");
         col2.transform.SetParent(waterParent);
+        col2.tag = "Obstacle";
 
         MeshFilter col1Mf = col1.AddComponent<MeshFilter>();
         MeshFilter col2Mf = col2.AddComponent<MeshFilter>();
