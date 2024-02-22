@@ -29,6 +29,8 @@ public class BoatNetworkInput : MonoBehaviour
 
     [SerializeField]
     private int port;
+    
+    bool inputThisFrame = false
 
     public string lastReceivedUDPPacket = "";
     public string allReceivedUDPPackets = ""; // clean up this from time to time!
@@ -68,10 +70,10 @@ public class BoatNetworkInput : MonoBehaviour
 
     private void Update()
     {
-        if (input != null)
+        if (inputThisFrame)
         {
             TriggerInput(input);
-            input = null;
+            inputThisFrame = false;
         }
     }
 
@@ -91,6 +93,7 @@ public class BoatNetworkInput : MonoBehaviour
                 input = ParseInput(text);
                 lastReceivedUDPPacket = input.ToString();
                 print($"received: {input.ToString()}");
+                inputThisFrame = true;
 
                 allReceivedUDPPackets = allReceivedUDPPackets + input.ToString();
             }
