@@ -9,6 +9,10 @@ using UnityEngine.Assertions;
 public class WaterSurfaceGenerator : MonoBehaviour
 {
     // NOTE: since spline instantiate component is retarded we have to this ourselves
+    [Header("rock spawning")]
+    public GameObject[] rocks;
+    public float rockSpawnChance = 0.4f;
+
     [Header("Tree spawning")]
     public GameObject[] treePrefabs;
     public float spawnChance = 0.4f;
@@ -378,6 +382,18 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 var col2Mr = col2.AddComponent<MeshRenderer>();
                 col1Mr.material = colMat;
                 col2Mr.material = colMat;
+            }
+
+            // Rock shit
+            if (UnityEngine.Random.Range(0f, 1f) <= rockSpawnChance)
+            {
+                // Random point on water surface
+                var bounds = outputMeshFilter.mesh.bounds;
+                float x = bounds.center.x + UnityEngine.Random.Range(-bounds.extents.x, bounds.extents.x);
+                float z = bounds.center.z + UnityEngine.Random.Range(-bounds.extents.z, bounds.extents.z);
+
+                var obj = Instantiate(rocks[(int)UnityEngine.Random.Range(0f, rocks.Length - 1)]);
+                obj.transform.position = new Vector3(x, 2, z);
             }
         }
     }

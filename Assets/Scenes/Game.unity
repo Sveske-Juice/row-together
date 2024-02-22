@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029127, g: 0.22572401, b: 0.3069303, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1083,6 +1083,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8accb45079c0ca894a77f9add67cb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocks:
+  - {fileID: 157192, guid: 84a240cf1c5ef5f4d8ff048828a60d97, type: 3}
+  - {fileID: 157192, guid: acfe6f61e4a58bf49ba0276aae7a0f10, type: 3}
+  - {fileID: 157192, guid: 62fef5f8990b7c14796ae6cb069b8c99, type: 3}
+  rockSpawnChance: 0.4
   treePrefabs:
   - {fileID: 2560309493006114087, guid: 1e49415e4ca8c874f97c5ef36c9d6abe, type: 3}
   - {fileID: 7725974178785476936, guid: bbf6e70e94acf91478188331554db1f8, type: 3}
@@ -1175,7 +1180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473352068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
   m_Name: 
@@ -1233,7 +1238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473352068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b74686beb0670a4ea61325c0acf4411, type: 3}
   m_Name: 
