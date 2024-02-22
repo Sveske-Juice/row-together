@@ -29,8 +29,8 @@ public class BoatNetworkInput : MonoBehaviour
 
     [SerializeField]
     private int port;
-    
-    bool inputThisFrame = false
+
+    bool inputThisFrame = false;
 
     public string lastReceivedUDPPacket = "";
     public string allReceivedUDPPackets = ""; // clean up this from time to time!
