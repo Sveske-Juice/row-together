@@ -72,7 +72,7 @@ public class BoatCollisions : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Obstacle") && rb.velocity.magnitude > minDmgSpeed && !cooldown)
+        if(collision.gameObject.CompareTag("Obstacle") && collision.impulse.magnitude > minDmgSpeed && !cooldown)
         {
             hp--;
             dmgParticles.Play();

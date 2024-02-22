@@ -11,7 +11,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
     // NOTE: since spline instantiate component is retarded we have to this ourselves
     [Header("rock spawning")]
     public GameObject[] rocks;
-    public float rockSpawnChance = 0.4f;
+    public AnimationCurve rockSpawnChance;
 
     [Header("Tree spawning")]
     public GameObject[] treePrefabs;
@@ -210,13 +210,17 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 juncCol1Mesh.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
                 juncCol1Mf.mesh = juncCol1Mesh;
 
-                juncCol1.AddComponent<MeshCollider>();
+                var jccc1 = juncCol1.AddComponent<MeshCollider>();
+                jccc1.material = sideWallMat;
+                jccc1.providesContacts = true;
 
                 juncCol2Mesh.SetVertices(new List<Vector3> { p2, new Vector3(p2.x, p2.y + colHeight, p2.z), p4, new Vector3(p4.x, p4.y + colHeight, p4.z) });
                 juncCol2Mesh.SetTriangles(new List<int> { t1, t2, t3, t4, t5, t6 }, submesh: 0);
                 juncCol2Mf.mesh = juncCol2Mesh;
 
-                juncCol2.AddComponent<MeshCollider>();
+                var jccc = juncCol2.AddComponent<MeshCollider>();
+                jccc.material = sideWallMat;
+                jccc.providesContacts = true;
 
                 GameObject juncCol11 = new GameObject($"Water junction collider {knotIdx} (1), redouble");
                 juncCol11.transform.SetParent(waterParent);
@@ -245,7 +249,9 @@ public class WaterSurfaceGenerator : MonoBehaviour
                 var juncCol22Col = juncCol22.AddComponent<MeshCollider>();
 
                 jucCol11Col.material = sideWallMat;
+                jucCol11Col.providesContacts = true;
                 juncCol22Col.material = sideWallMat;
+                juncCol22Col.providesContacts = true;
 
                 juncCol1.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
                 juncCol11.AddComponent<DestroyOnDist>().Init(Boat.Instance.transform, destroyDist, checkMesh: true);
@@ -374,6 +380,8 @@ public class WaterSurfaceGenerator : MonoBehaviour
 
             col1Col.material = sideWallMat;
             col2Col.material = sideWallMat;
+            col1Col.providesContacts = true;
+            col2Col.providesContacts = true;
 
             // debug
             if (debug)
@@ -385,7 +393,7 @@ public class WaterSurfaceGenerator : MonoBehaviour
             }
 
             // Rock shit
-            if (UnityEngine.Random.Range(0f, 1f) <= rockSpawnChance)
+            if (UnityEngine.Random.Range(0f, 1f) <= rockSpawnChance.Evaluate(Boat.Instance.transform.position.z))
             {
                 // Random point on water surface
                 var bounds = outputMeshFilter.mesh.bounds;
