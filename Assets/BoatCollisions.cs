@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BoatCollisions : MonoBehaviour
 {
@@ -11,8 +13,14 @@ public class BoatCollisions : MonoBehaviour
     public ParticleSystem dmgParticles;
 
     bool cooldown = false;
+    bool isDead = false;
     float timer = 0;
-    float cooldownTime = 10;
+    float cooldownTime = 5;
+
+    public GameObject livesUI, scoreUI, goScreen, newBestText;
+    public TextMeshProUGUI returnTimer, goScoreText;
+    public GameObject scoreManagerObject;
+    public ScoreManager scoreManager;
 
 
     // Start is called before the first frame update
@@ -24,11 +32,22 @@ public class BoatCollisions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hp <= 0)
+        if(hp <= 0 && !isDead)
         {
-            //End Game
-            Time.timeScale = 0;
-            print("dead");
+            
+            GetComponent<Boat>().enabled = false;
+            isDead = true;
+            goScreen.SetActive(true);
+            newBestText.SetActive(false);
+            scoreUI.SetActive(false);
+            livesUI.SetActive(false);
+            goScoreText.text = scoreManager.score + "M";
+            if (scoreManager.score == PlayerPrefs.GetInt("HighScore", 0))
+            {
+                newBestText.SetActive(true);
+            }
+            scoreManagerObject.SetActive(false);
+            StartCoroutine(ReturnToMenu());
         }
 
         for (int i = 0; i < hpIcons.Length; i++)
@@ -59,5 +78,16 @@ public class BoatCollisions : MonoBehaviour
             dmgParticles.Play();
             cooldown = true;
         }
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        int time = 10;
+        while (time > 0)
+        {
+            returnTimer.text = time-- +"";
+            yield return new WaitForSecondsRealtime(1f);
+        }
+        SceneManager.LoadScene(0);
     }
 }

@@ -6,7 +6,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    int score;
+    public int score;
     [SerializeField] GameObject boat;
     Transform startPos;
     public TextMeshProUGUI scoreText;
