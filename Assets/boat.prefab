@@ -4945,7 +4945,7 @@ Transform:
   m_GameObject: {fileID: 4759254690563300720}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00499}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0044}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4977,7 +4977,7 @@ Transform:
   m_GameObject: {fileID: 5775336352620058979}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.00484}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5009,7 +5009,7 @@ Transform:
   m_GameObject: {fileID: 9072887531208403055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.0046}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0044}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5037,7 +5037,7 @@ PrefabInstance:
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01537
+      value: -0.0157
       objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
@@ -5112,7 +5112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  paddleForce: 0.3
+  paddleForce: -0.2
   forwardBoost: 3.5
 --- !u!4 &7645718845685865868 stripped
 Transform:
@@ -5245,7 +5245,7 @@ PrefabInstance:
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01537
+      value: -0.0157
       objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
@@ -5349,7 +5349,7 @@ PrefabInstance:
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.01537
+      value: -0.0157
       objectReference: {fileID: 0}
     - target: {fileID: 7198997225102820959, guid: ffdf3f79bf345a640916513f9b2497bf,
         type: 3}
@@ -5430,7 +5430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  paddleForce: 0.3
+  paddleForce: -0.2
   forwardBoost: 3.5
 --- !u!1001 &8170182058492018690
 PrefabInstance:
@@ -5621,7 +5621,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2101376797427763806}
   splineContainer: {fileID: 0}
-  streamDrag: 1
+  streamDrag:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   keepOnPathDrag: 1
   maxSpeed: 10
   rotateSpeed: 1.5

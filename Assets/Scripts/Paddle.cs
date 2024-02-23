@@ -4,7 +4,7 @@ public class Paddle : MonoBehaviour
 {
     public Animator animator;
 
-    [SerializeField, Range(0f, 50f)]
+    [SerializeField, Range(-50f, 50f)]
     private float paddleForce = 15f;
 
     [SerializeField, Range(0f, 50f)]
