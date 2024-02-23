@@ -48,18 +48,18 @@ public class BoatNetworkInput : MonoBehaviour
     }
 
     // OnGUI
-    void OnGUI()
-    {
-        string ipv4 = IPManager.GetIP(ADDRESSFAM.IPv4);
-        Rect rectObj = new Rect(40, 10, 200, 400);
-        GUIStyle style = new GUIStyle();
-        style.alignment = TextAnchor.UpperLeft;
-        GUI.Box(
-            rectObj,
-            $"IP: {ipv4}",
-            style
-        );
-    }
+    //void OnGUI()
+    //{
+    //    string ipv4 = IPManager.GetIP(ADDRESSFAM.IPv4);
+    //    Rect rectObj = new Rect(40, 10, 200, 400);
+    //    GUIStyle style = new GUIStyle();
+    //    style.alignment = TextAnchor.UpperLeft;
+    //    GUI.Box(
+    //        rectObj,
+    //        $"IP: {ipv4}",
+    //        style
+    //    );
+    //}
 
     private void init()
     {
