@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class BoatCollisions : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class BoatCollisions : MonoBehaviour
         {
             
             GetComponent<Boat>().enabled = false;
+            GetComponent<PlayerInput>().enabled = false;
             isDead = true;
             goScreen.SetActive(true);
             newBestText.SetActive(false);
